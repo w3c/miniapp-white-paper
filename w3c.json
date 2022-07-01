@@ -1,5 +1,10 @@
 {
-    "group":     109611,
-    "contacts":  ["xfq", "xueyuanjia"],
-    "repo-type": "others"
+    "group": [
+      "128558"
+    ],
+    "contacts": [
+      "xfq"
+    ],
+    "shortName": "mini-app-white-paper",
+    "repo-type": "note"
 }
