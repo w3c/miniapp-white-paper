@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Comparison of Components in MiniApps</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #005A9C;
+            font-weight: bold;
+            margin: 0 0 .1em;
+            font-size: 160%;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #fff;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        td {
+            padding: 0.4em 0.4em;
+            text-align: left;
+            border-right: 1px solid rgba(17, 101, 145, 0.4);
+            border-left: 1px solid rgba(17, 101, 145, 0.4);
+        }
+        
+        tr:last-child td {
+            border-bottom: 1px solid rgba(17, 101, 145, 0.4);
+        }
+        
+        td.err {
+            background-color: #e992b9;
+            color: #fff;
+            font-size: 0.5em;
+            text-align: center;
+            line-height: 1;
+        }
+        
+        th {
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            padding-top: 1.0em;
+            padding-bottom: 1.0em;
+            top: 0;
+            background-color: #034575;
+            position: sticky;
+            min-width: 120px;
+        }
+        
+        tbody tr:nth-child(2n-1) {
+            background-color: #fafafa;
+            transition: all .125s ease-in-out;
+        }
+        
+        tbody tr:hover {
+            background-color: rgba(17, 101, 145, 0.95);
+            color: #fff;
+        }
+        
+        tbody tr td.c2,
+        tbody tr td.c3,
+        tbody tr td.c4,
+        tbody tr td.c5 {
+            background-color: rgba(0, 255, 0, 0.3);
+        }
+        
+        tbody tr td.no {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        tbody tr td.partial {
+            background-color: rgba(255, 255, 0, 0.3);
+        }
+        
+        .c2,
+        .c3,
+        .c4,
+        .c5 {
+            width: 15vw;
+        }
+        
+        .search {
+            text-align: left;
+            margin: 1rem;
+            position: absolute;
+            top: -0.1rem;
+            left: 0rem;
+            z-index: 1000;
+            background-color: transparent;
+            display: inline-block;
+        }
+        
+        input[type=search] {
+            border: 1px solid rgba(17, 101, 145, 0.4);
+            padding: 0.5em 0.5em;
+            width: 120px;
+            font-size: 16px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        a[href] {
+            color: #034575;
+            text-decoration: none;
+            border-bottom: 1px solid #707070;
+            padding: 0 1px 0;
+            margin: 0 -1px 0;
+        }
+        
+        a:visited {
+            border-bottom-color: #BBB;
+        }
+        
+        a[href]:focus,
+        a[href]:hover {
+            background: #f8f8f8;
+            background: rgba(75%, 75%, 75%, .25);
+            border-bottom-width: 2px;
+            margin-bottom: -2px;
+        }
+        
+        th a[href] {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid #ffffff;
+        }
+        
+        th a:visited {
+            border-bottom-color: #eee;
+        }
+        
+        th a[href]:focus,
+        th a[href]:hover {
+            background: #f8f8f8;
+            background: rgba(75%, 75%, 75%, .25);
+            border-bottom-width: 2px;
+            margin-bottom: -2px;
+        }
+        
+        tbody tr:hover a {
+            color: #fff;
+            border-bottom: 1px solid #ffffff;
+        }
+        
+        tbody tr:hover a:visited {
+            border-bottom-color: #fff;
+        }
+        
+        tbody tr:hover a[href]:focus,
+        tbody tr:hover a[href]:hover {
+            border-bottom: 2px solid #fff;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Comparison of Components in MiniApps</h1>
+    <div class="table-wrapper">
+        <div class="search">
+            <span>Search:</span>
+            <input placeholder="button" type="search" id="search">
+        </div>
+        <table id="filter">
+            <thead>
+                <tr class="r0">
+                    <th class="c0" scope="col">Category</th>
+                    <th class="c1" scope="col">Feature</th>
+                    <th class="c2" scope="col">W3C <abbr title="Specification">Spec</abbr></th>
+                    <th class="c3" scope="col"><a href="https://www.quickapp.cn/" rel="nofollow">QuickApp (Xiaomi, Huawei)</a></th>
+                    <th class="c4" scope="col"><a href="https://docs.alipay.com/mini/developer/" rel="nofollow">Alipay Mini Program</a>
+                    </th>
+                    <th class="c5"><a href="https://smartprogram.baidu.com/developer/index.html" rel="nofollow">Baidu Smart Mini
+              Program</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">div</td>
+                    <td class="c2"><code>&lt;div&gt;</code></td>
+                    <td class="c3"><code>&lt;div&gt;</code></td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;view&gt;</code>
+                            </summary>
+                            <code>&lt;view&gt;</code>, <code>&lt;scroll-view&gt;</code>, <code>&lt;movable-view&gt;</code>,
+                            <code>&lt;movable-area&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;view&gt;</code>
+                            </summary>
+                            <code>&lt;view&gt;</code>, <code>&lt;scroll-view&gt;</code>, <code>&lt;movable-view&gt;</code>,
+                            <code>&lt;movable-area&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">span</td>
+                    <td class="c2"><code>&lt;span&gt;</code></td>
+                    <td class="c3"><code>&lt;span&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">stack</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;stack&gt;</code></td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;cover-view&gt;</code>
+                            </summary>
+                            <code>&lt;cover-view&gt;</code>, <code>&lt;cover-image&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;cover-view&gt;</code>
+                            </summary>
+                            <code>&lt;cover-view&gt;</code>, <code>&lt;cover-image&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">carousel</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;swiper&gt;</code></td>
+                    <td class="c4"><code>&lt;swiper&gt;</code></td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;swiper&gt;</code>
+                            </summary>
+                            <code>&lt;swiper&gt;</code>, <code>&lt;swiper-item&gt;</code>
+                        </details>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">tabs</td>
+                    <td class="c2 no"></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>&lt;tabs&gt;</code>
+                            </summary>
+                            <code>&lt;tabs&gt;</code>, <code>&lt;tab-bar&gt;</code>, <code>&lt;tab-content&gt;</code>
+                        </details>
+                    </td>
+
+
+
+                    <td class="c4 no"></td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;tabs&gt;</code>
+                            </summary>
+                            <code>&lt;tabs&gt;</code>, <code>&lt;tab-item&gt;</code>
+                        </details>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">refresh</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;refresh&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">icon</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4"><code>&lt;icon&gt;</code></td>
+                    <td class="c5"><code>&lt;icon&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">progress</td>
+                    <td class="c2"><code>&lt;progress&gt;</code></td>
+                    <td class="c3"><code>&lt;progress&gt;</code></td>
+                    <td class="c4"><code>&lt;progress&gt;</code></td>
+                    <td class="c5"><code>&lt;progress&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">anchor</td>
+                    <td class="c2"><code>a</code></td>
+                    <td class="c3"><code>a</code></td>
+                    <td class="c4"><code>&lt;navigator&gt;</code></td>
+                    <td class="c5"><code>&lt;navigator&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">text</td>
+                    <td class="c2"><code>&lt;span&gt;</code></td>
+                    <td class="c3"><code>&lt;text&gt;</code></td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;text&gt;</code>
+                            </summary>
+                            <code>&lt;text&gt;</code>, <code>&lt;rich-text&gt;</code>
+                        </details>
+                    </td>
+
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;text&gt;</code>
+                            </summary>
+                            <code>&lt;text&gt;</code>, <code>&lt;rich-text&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">text input</td>
+                    <td class="c2"><code>&lt;input&gt;</code></td>
+                    <td class="c3"><code>&lt;input&gt;</code></td>
+                    <td class="c4"><code>&lt;input&gt;</code></td>
+                    <td class="c5"><code>&lt;input&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">camera</td>
+                    <td class="c2">
+                        <details>
+                            <summary>
+                                <code>&lt;input&gt;</code>
+                            </summary>
+                            <code>&lt;input type="file" accept="image/*" capture&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c3"><code>&lt;camera&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5"><code>&lt;camera&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">textarea</td>
+                    <td class="c2"><code>&lt;textarea&gt;</code></td>
+                    <td class="c3"><code>&lt;textarea&gt;</code></td>
+                    <td class="c4"><code>&lt;textarea&gt;</code></td>
+                    <td class="c5">
+                        <details>
+                            <summary><code>&lt;textarea&gt;</code></summary>
+                            <code>&lt;textarea&gt;</code>, <code>&lt;ql-editor&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">checkbox</td>
+                    <td class="c2"><code>&lt;input type="checkbox"&gt;</code></td>
+                    <td class="c3"><code>&lt;input type="checkbox"&gt;</code></td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;checkbox&gt;</code>
+                            </summary>
+                            <code>&lt;checkbox&gt;</code>, <code>&lt;checkbox-group&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;checkbox&gt;</code>
+                            </summary>
+                            <code>&lt;checkbox&gt;</code>, <code>&lt;checkbox-group&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">radio</td>
+                    <td class="c2"><code>&lt;input type="radio"&gt;</code></td>
+                    <td class="c3"><code>&lt;input type="radio"&gt;</code></td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;radio&gt;</code>
+                            </summary>
+                            <code>&lt;radio&gt;</code>, <code>&lt;radio-group&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;radio&gt;</code>
+                            </summary>
+                            <code>&lt;radio&gt;</code>, <code>&lt;radio-group&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">form</td>
+                    <td class="c2"><code>&lt;form&gt;</code></td>
+                    <td class="c3 no"></td>
+                    <td class="c4"><code>&lt;form&gt;</code></td>
+                    <td class="c5"><code>&lt;form&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">button</td>
+                    <td class="c2"><code>&lt;button&gt;</code></td>
+                    <td class="c3"><code>&lt;input type="button"&gt;</code></td>
+                    <td class="c4"><code>&lt;button&gt;</code></td>
+                    <td class="c5"><code>&lt;button&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">label</td>
+                    <td class="c2"><code>&lt;label&gt;</code></td>
+                    <td class="c3"><code>&lt;label&gt;</code></td>
+                    <td class="c4"><code>&lt;label&gt;</code></td>
+                    <td class="c5"><code>&lt;label&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">select</td>
+                    <td class="c2">
+                        <details>
+                            <summary>
+                                <code>&lt;select&gt;</code>
+                            </summary>
+                            <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>&lt;select&gt;</code>
+                            </summary>
+                            <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;picker&gt;</code>
+                            </summary>
+                            <code>&lt;picker&gt;</code>, <code>&lt;picker-view&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;picker&gt;</code>
+                            </summary>
+                            <code>&lt;picker&gt;</code>, <code>&lt;picker-view&gt;</code>, <code>&lt;picker-view-column&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">slider</td>
+                    <td class="c2"><code>&lt;input&gt;</code></td>
+                    <td class="c3"><code>&lt;slider&gt;</code></td>
+                    <td class="c4"><code>&lt;slider&gt;</code></td>
+                    <td class="c5"><code>&lt;slider&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">switch</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;switch&gt;</code></td>
+                    <td class="c4"><code>&lt;switch&gt;</code></td>
+                    <td class="c5"><code>&lt;switch&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">picker</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;picker&gt;</code></td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>&lt;picker&gt;</code>
+                            </summary>
+                            <code>&lt;picker&gt;</code>, <code>&lt;picker-view&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;picker&gt;</code>
+                            </summary>
+                            <code>&lt;picker&gt;</code>, <code>&lt;picker-view&gt;</code>, <code>&lt;picker-view-column&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">image</td>
+                    <td class="c2"><code>&lt;img&gt;</code></td>
+                    <td class="c3"><code>&lt;image&gt;</code></td>
+                    <td class="c4"><code>&lt;image&gt;</code></td>
+                    <td class="c5"><code>&lt;image&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">audio</td>
+                    <td class="c2"><code>&lt;audio&gt;</code></td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5"><code>&lt;audio&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">video</td>
+                    <td class="c2"><code>&lt;video&gt;</code></td>
+                    <td class="c3"><code>&lt;video&gt;</code></td>
+                    <td class="c4"><code>&lt;video&gt;</code></td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;video&gt;</code>
+                            </summary>
+                            <code>&lt;video&gt;</code>, <code>&lt;live-player&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">canvas</td>
+                    <td class="c2"><code>&lt;canvas&gt;</code></td>
+                    <td class="c3"><code>&lt;canvas&gt;</code></td>
+                    <td class="c4"><code>&lt;canvas&gt;</code></td>
+                    <td class="c5"><code>&lt;canvas&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">animation</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;lottie&gt;</code></td>
+                    <td class="c4"><code>&lt;lottie&gt;</code></td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;animation-video&gt;</code>
+                            </summary>
+                            <code>&lt;animation-video&gt;</code>, <code>&lt;animation-view&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">web-view</td>
+                    <td class="c2"><code>&lt;html&gt;</code></td>
+                    <td class="c3"><code>&lt;web&gt;</code></td>
+                    <td class="c4"><code>&lt;web-view&gt;</code></td>
+                    <td class="c5"><code>&lt;web-view&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">map</td>
+                    <td class="c2 no"></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>&lt;map&gt;</code>
+                            </summary>
+                            <code>&lt;map&gt;</code>, <code>&lt;custommarker&gt;</code>
+                        </details>
+                    </td>
+
+                    <td class="c4"><code>&lt;map&gt;</code></td>
+                    <td class="c5"><code>&lt;map&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">list</td>
+                    <td class="c2 no"></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>&lt;list&gt;</code>
+                            </summary>
+                            <code>&lt;list&gt;</code>, <code>&lt;list-item&gt;</code>
+                        </details>
+                    </td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">popup</td>
+                    <td class="c2"><code>&lt;dialog&gt;</code></td>
+                    <td class="c3"><code>&lt;popup&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">rtc-room</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;rtc-room&gt;</code>
+                            </summary>
+                            <code>&lt;rtc-room&gt;</code>, <code>&lt;rtc-room-item&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">ad</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5"><code>&lt;ad&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">payment</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5"><code>&lt;inline-payment-panel&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">comments</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>&lt;comment-list&gt;</code>
+                            </summary>
+                            <code>&lt;comment-list&gt;</code>, <code>&lt;comment-detail&gt;</code>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">like</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5"><code>&lt;like&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">3d-model</td>
+                    <td class="c2 partial"><code>&lt;model&gt;</code> (<abbr title="Work in Progress">WIP</abbr>)</td>
+                    <td class="c3 no"></td>
+                    <td class="c4 no"></td>
+                    <td class="c5"><code>&lt;modelviewer&gt;</code></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">rating</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;rating&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">marquee</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;marquee&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">share-button</td>
+                    <td class="c2 no"></td>
+                    <td class="c3"><code>&lt;share-button&gt;</code></td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">drawer</td>
+                    <td class="c2 no"></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>&lt;drawer&gt;</code>
+                            </summary>
+                            <code>&lt;drawer&gt;</code>, <code>&lt;drawer-navigation&gt;</code> </details>
+                    </td>
+                    <td class="c4 no"></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">match-media</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4"><code>&lt;match-media&gt;</code></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">aria-component</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4"><code>&lt;aria-component&gt;</code></td>
+                    <td class="c5 no"></td>
+                </tr>
+                <tr>
+                    <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
+                    <td class="c1">page metadata</td>
+                    <td class="c2 no"></td>
+                    <td class="c3 no"></td>
+                    <td class="c4"><code>&lt;page-meta&gt;</code></td>
+                    <td class="c5 no"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const search = document.getElementById('search')
+        const table = document.getElementById('filter')
+        const trArray = Array.prototype.slice.call(table.querySelectorAll('tbody tr'))
+
+        const filter = event => {
+            const searchTerm = event.target.value.toLowerCase()
+            trArray.forEach(row => {
+                row.classList.add('hidden')
+                const tdArray = Array.prototype.slice.call(row.getElementsByTagName('td'))
+                tdArray.forEach(cell => {
+                    if (cell.innerText.toLowerCase().indexOf(searchTerm) > -1) {
+                        row.classList.remove('hidden')
+                    }
+                })
+            })
+        }
+
+        search.addEventListener('keyup', filter, false)
+    </script>
+</body>
+
+</html>
