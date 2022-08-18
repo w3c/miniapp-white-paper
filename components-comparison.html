@@ -181,6 +181,13 @@
         ::-webkit-scrollbar-thumb {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         }
+        
+        table tbody tr.large-cell td.c2,
+        table tbody tr.large-cell td.c3,
+        table tbody tr.large-cell td.c4,
+        table tbody tr.large-cell td.c5 {
+            vertical-align: top;
+        }
     </style>
 </head>
 
@@ -287,9 +294,6 @@
                             <code>&lt;tabs&gt;</code>, <code>&lt;tab-bar&gt;</code>, <code>&lt;tab-content&gt;</code>
                         </details>
                     </td>
-
-
-
                     <td class="c4 no"></td>
                     <td class="c5">
                         <details>
@@ -299,7 +303,6 @@
                             <code>&lt;tabs&gt;</code>, <code>&lt;tab-item&gt;</code>
                         </details>
                     </td>
-
                 </tr>
                 <tr>
                     <td class="c0">Built-in <abbr title="Components">Comp.</abbr></td>
@@ -346,7 +349,6 @@
                             <code>&lt;text&gt;</code>, <code>&lt;rich-text&gt;</code>
                         </details>
                     </td>
-
                     <td class="c5">
                         <details>
                             <summary>
@@ -730,7 +732,8 @@
                             <summary>
                                 <code>&lt;drawer&gt;</code>
                             </summary>
-                            <code>&lt;drawer&gt;</code>, <code>&lt;drawer-navigation&gt;</code> </details>
+                            <code>&lt;drawer&gt;</code>, <code>&lt;drawer-navigation&gt;</code>
+                        </details>
                     </td>
                     <td class="c4 no"></td>
                     <td class="c5 no"></td>
@@ -758,6 +761,691 @@
                     <td class="c3 no"></td>
                     <td class="c4"><code>&lt;page-meta&gt;</code></td>
                     <td class="c5 no"></td>
+                </tr>
+                <!-- Data Binding -->
+                <tr class="large-cell">
+                    <td class="c0">Data binding</td>
+                    <td class="c1">Text interpolation</td>
+                    <td class="c2 no">&nbsp;</td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                Vue.js-like approach under the same .ux document.
+                            </summary>
+                            <code>
+                                <pre>
+&lt;template&gt;
+  &lt;text&gt;{{message}}&lt;/text&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    private: {
+      message: 'Hello'
+    }
+  }
+&lt;/script&gt;</pre>  
+                            </code>
+                            <a href="https://doc.quickapp.cn/framework/template.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                Dynamic data in AXML is bound to the Page corresponding data content.
+                            </summary>
+                            <code>
+                                <pre>
+&lt;view&gt; {{ message }} &lt;/view&gt;
+
+Page({ 
+   data: { 
+     message: 'Hello alipay!', 
+    }, 
+});
+                                </pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/data-binding">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                The rendering layer binds data through a SWAN template.
+                            </summary>
+                            <code>
+                                <pre>
+&lt;!-- index.swan --&gt;
+&lt;view&gt;{{text}}&lt;/view&gt;
+
+// index.js
+Page({
+    data: {
+        text: 'init data',
+    }
+});</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/app_service_pagedata/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+                <tr class="large-cell">
+                    <td class="c0">Templates</td>
+                    <td class="c1">Definition</td>
+                    <td class="c2"><code>&lt;template&gt;<code>, <code>&lt;slot&gt;<code></td>
+                    <td class="c3">
+<details>
+                            <summary>
+                                <code>&lt;template&gt;</code> element in the root of the .ux document
+                        </summary>
+                        <code>
+                                <pre>
+&lt;!– comp.ux --&gt;
+&lt;template&gt;
+  &lt;div class="demo-page"&gt;
+    &lt;text class="title"&gt;Hi World&lt;/text&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</pre>  
+                            </code>
+                        <a href="https://doc.quickapp.cn/framework/template.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                AXML’s <code>&lt;template&gt;</code> element
+                            </summary>
+                            <code>
+                                <pre>
+&lt;!-- header.axml --&gt;
+&lt;template name=“header"&gt;
+  &lt;view&gt;
+    &lt;text&gt;{{index}}:{{msg}}&lt;/text&gt;
+  &lt;/view&gt;
+&lt;/template&gt;
+</pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/axml-template">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                SWAN document with elements
+                            </summary>
+                            <code>
+                                <pre>
+&lt;view&gt;
+    &lt;text class="wrap"&gt;hello world&lt;/text&gt;
+&lt;/view&gt;
+&lt;text Class="wrap"&gt;hello world&lt;/text&gt;
+</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/dev/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Templates</td>
+                    <td class="c1">Use</td>
+                    <td class="c2"><code>template.content</code></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>&lt;import&gt;</code> element in the root of the .ux document
+                            </summary>
+                            <code>
+                                <pre>
+&lt;import name="comp" src="./comp"&gt;&lt;/import&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;comp&gt;&lt;/comp&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</pre>  
+                            </code>
+                            <a href="https://doc.quickapp.cn/framework/template.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                AXML’s <code>&lt;import&gt;</code> element
+                            </summary>
+                            <code>
+                                <pre>
+&lt;import src="./header.axml" /&gt;
+
+&lt;template is="header" data="{{...item}}"/&gt;
+</pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/axml-template">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                Declaration in configuration document
+                            </summary>
+                            <code>
+                                <pre>
+// home.json
+{
+  "usingComponents": {
+     "custom": "/components/custom/custom"
+   }
+}
+
+&lt;!-- home.swan --&gt;
+&lt;view&gt;
+   &lt;custom name="swanapp"&gt;&lt;/custom&gt;
+&lt;/view&gt;
+</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/dev/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Parameters</td>
+                    <td class="c1">Definition</td>
+                    <td class="c2">Attributes</td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                Components define properties as <code>props</code>
+                            </summary>
+                            <code>
+                                <pre>
+&lt;!– comp.ux --&gt;
+&lt;script&gt;
+  export default {
+    props: ['say', 'propObject'],
+    onInit() {
+      console.info(this.say);    
+      console.info(this.propObject)
+    }
+  }
+&lt;/script&gt;
+</pre>  
+                            </code>
+                            <a href="https://doc.quickapp.cn/tutorial/framework/parent-child-component-communication.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                Components define properties as <code>props</code>
+                            </summary>
+                            <code>
+                                <pre>
+// /components/index/index.js
+Component ({
+  props : { 
+    name : 'My name'}
+});
+</pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/component_object">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                Use of <code>Component()</code> + properties for registration
+                            </summary>
+                            <code>
+                                <pre>
+// (custom.js)
+Component({
+  properties: {
+    name: {
+      type: String,
+      value: 'swan',
+    }
+  }
+})
+</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/custom-component/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Parameters</td>
+                    <td class="c1">Use</td>
+                    <td class="c2">Attributes</td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>props</code> as instance's attributes
+                            </summary>
+                            <code>
+                                <pre>
+&lt;import name="comp" src="./comp"&gt;&lt;/import&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;comp 
+      say=“First Test" 
+      prop-object="{{obj}}"&gt;
+    &lt;/comp&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</pre>  
+                            </code>
+                            <a href="https://doc.quickapp.cn/tutorial/framework/parent-child-component-communication.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>props</code> as instance's attributes.
+                            </summary>
+                            <code>
+                                <pre>
+&lt;!-- /pages/index/index.axml --&gt;
+&lt;comp name='Another name'&gt;&lt;/comp&gt; 
+</pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/component_object">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>properties</code> as instance's attributes
+                            </summary>
+                            <code>
+                                <pre>
+// home.json
+{
+  "usingComponents": {
+     "custom": "/components/custom/custom"
+   }
+}
+// .swan document
+&lt;view&gt;
+    &lt;custom name="Passing text" &gt;
+    &lt;/custom&gt;
+&lt;/view&gt;
+</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/custom-component/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Events</td>
+                    <td class="c1">Binding</td>
+                    <td class="c2"><code>addEventListener</code>, event handlers</td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>on+eventtype</code> attribute (<code>@+eventtype</code>)
+                            </summary>
+                            <code>
+                                <pre>
+&lt;text onclick="loadMore"&gt;&lt;/text&gt;
+</pre>  
+                            </code>
+                            <a href="https://doc.quickapp.cn/tutorial/framework/event-on.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>on+eventtype</code> attribute
+                            </summary>
+                            <code>
+                                <pre>
+&lt;view onTap="loadMore"&gt;
+  More items…
+&lt;view&gt; 
+</pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/events">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>bind:+eventtype</code> attribute
+                            </summary>
+                            <code>
+                                <pre>
+&lt;view bind:tap="loadMore"&gt;
+   More items…
+&lt;/view&gt;
+</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/view_incident/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+                <tr class="large-cell">
+                    <td class="c0">Events</td>
+                    <td class="c1">Listener</td>
+                    <td class="c2"><code>function()<code> declaration</td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                <code>function()<code> declaration in the <code>&lt;script&gt;</code>
+                        </summary>
+                        <code>
+                                <pre>
+&lt;script&gt;
+  export default {
+    loadMore(e) {
+      console.log(e);
+    }  
+  }
+&lt;/script&gt;
+</pre>  
+                            </code>
+                        <a href="https://doc.quickapp.cn/tutorial/framework/event-on.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>function()<code> declaration in <code>Page({})</code>
+                            </summary>
+                            <code>
+                                <pre>
+Page ({
+  loadMore(e) {
+    console.log(e);
+  },
+});
+</pre>  
+                            </code>
+                            <a href="https://opendocs.alipay.com/mini/framework/events">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                <code>function()<code> declaration in <code>Page({})</code>
+                            </summary>
+                            <code>
+                                <pre>
+Page({
+  loadMore(e) {
+    swan.showToast(e.type);
+  }
+});
+</pre>  
+                            </code>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/view_incident/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="c0">Events</td>
+                    <td class="c1">Basic event types</td>
+                    <td class="c2"><a href="https://html.spec.whatwg.org/multipage/indices.html#events-2">event types</a></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                basic events
+                            </summary>
+                            <code>touchstart</code>,
+                            <code>touchmove</code>,
+                            <code>touchend</code>,
+                            <code>touchcancel</code>,
+                            <code>click</code>,
+                            <code>longpress</code>,
+                            <code>focus</code>,
+                            <code>blur</code>,
+                            <code>appear</code>,
+                            <code>disappear</code>,
+                            <code>swipe</code>,
+                            <code>resize</code>
+                            <br/>
+                            <a href="https://doc.quickapp.cn/tutorial/framework/event-on.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                basic events
+                            </summary>
+                            <code>touchStart</code>,
+                            <code>touchMove</code>,
+                            <code>touchEnd</code>,
+                            <code>touchCancel</code>,
+                            <code>longTap</code>,
+                            <code>tap</code>
+                            <br/>
+                            <a href="https://opendocs.alipay.com/mini/framework/events">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                basic events
+                            </summary>
+                            <code>touchstart</code>,
+                            <code>touchmove</code>,
+                            <code>touchend</code>,
+                            <code>touchcancel</code>,
+                            <code>tap</code>
+                            <br>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/view_incident/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="c0">Events</td>
+                    <td class="c1">Interface properties</td>
+                    <td class="c2">Standard <a href="https://dom.spec.whatwg.org/#interface-event">properties</a></td>
+                    <td class="c3">
+                        <details>
+                            <summary>
+                                Event interface's properties
+                            </summary>
+                            <code>type</code>,
+                            <code>timeStamp</code>,
+                            <code>target</code>,
+                            <code>currentTarget</code>
+                            <br/>
+                            <a href="https://doc.quickapp.cn/widgets/common-events.html">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>
+                                <code>BaseEvent</code>'s properties
+                            </summary>
+                            <code>type</code>,
+                            <code>timeStamp</code>,
+                            <code>target</code>
+                            <br/>
+                            <a href="https://opendocs.alipay.com/mini/framework/event-object">More information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>
+                                Properties of the event object
+                            </summary>
+                            <code>type</code>,
+                            <code>timeStamp</code>,
+                            <code>target</code>,
+                            <code>currentTarget</code>,
+                            <code>detail</code>,
+                            <code>touches</code>,
+                            <code>changedTouches</code>
+                            <br>
+                            <a href="https://smartprogram.baidu.com/docs/develop/framework/view_incident/">More information</a>.
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c0">Styles</td>
+                    <td class="c1">CSS profile</td>
+                    <td class="c2">Standard CSS</td>
+                    <td class="c3">
+                        <details>
+                            <summary>Based on CSS3 + preprocessing</summary>
+                            Supports LESS and SASS.<br> Only supports a <a href="https://doc.quickapp.cn/widgets/common-styles.html">subset of selectors and properties</a>,
+                            and the following units: <code>px</code>,
+                            <code>dp</code> (device independent pixels), and <code>%</code>.<br> See the <a href="https://doc.quickapp.cn/tutorial/framework/page-style-and-layout.html">specification</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>ACSS, compatible with CSS3</summary>
+                            Profile based on CSS, adding <code>rpx</code> (responsive pixel), and a specific <code>page</code>                            selector.<br> See the <a href="https://opendocs.alipay.com/mini/framework/acss">specification</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>Suports CSS3</summary>
+                            Profile based on CSS, adding <code>rpx</code> (responsive pixel).<br> See the <a href="https://smartprogram.baidu.com/docs/develop/framework/view_css/">specification</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Styles</td>
+                    <td class="c1">Inline declaration</td>
+                    <td class="c2"><code>style</code> attribute</td>
+                    <td class="c3">
+                        <details>
+                            <summary><code>style</code> attribute</summary>
+                            &lt;template&gt; &lt;div style="flex-direction: column;"&gt; &lt;/div&gt; &lt;/template&gt;
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary><code>style</code> attribute</summary>
+                            // Within the template &lt;view style="color:#ffffff“ /&gt;
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary><code>style</code> attribute</summary>
+                            // Within the .swan file &lt;view style="color: #ffffff"&gt; swan &lt;/view&gt;
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Styles</td>
+                    <td class="c1">Import stylesheet</td>
+                    <td class="c2"><code>@import</code></td>
+                    <td class="c3">
+                        <details>
+                            <summary><code>@import</code> within <code>&lt;style&gt;</code></summary>
+                            &lt;style&gt; @import './style.css'; &lt;/style&gt;
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary><code>@import</code> within <code>.acss</code></summary>
+                            // within a .acss document @import "./button.acss" ; @import "/common/button.acss" ;
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary><code>@import</code> from <code>.css</code></summary>
+                            // Within the .css document @import "header.css";
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Component interface</td>
+                    <td class="c1">Properties</td>
+                    <td class="c2"><a href="https://html.spec.whatwg.org/multipage/dom.html#htmlelement"><code>HTMLElement</code></a> interface</td>
+                    <td class="c3">
+                        <details>
+                            <summary>Predefined properties</summary>
+                            <code>data</code>,
+                            <code>props</code>,
+                            <code>computed</code>,
+                            <code>externalClasses</code>,
+                            <code>$app</code>,
+                            <code>$page</code><br> See <a href="https://doc.quickapp.cn/framework/script.html">more information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>Predefined properties</summary>
+                            <code>data</code>,
+                            <code>props</code>,
+                            <code>is</code>,
+                            <code>$id</code>,
+                            <code>router</code>,
+                            <code>pageRouter</code>,
+                            <code>$page (access the page)</code><br> See <a href="https://opendocs.alipay.com/mini/framework/component_object">more information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>Predefined properties</summary>
+                            <code>is</code>,
+                            <code>id</code>,
+                            <code>dataset</code>,
+                            <code>data</code>,
+                            <code>properties</code><br> See <a href="https://smartprogram.baidu.com/docs/develop/framework/custom-component_comp/">more information</a>.
+                        </details>
+                    </td>
+                </tr>
+
+                <tr class="large-cell">
+                    <td class="c0">Component interface</td>
+                    <td class="c1">Methods</td>
+                    <td class="c2"><a href="https://html.spec.whatwg.org/multipage/dom.html#htmlelement"><code>HTMLElement</code></a> interface</td>
+                    <td class="c3">
+                        <details>
+                            <summary>Predefined methods</summary>
+                            <code>$valid</code>,
+                            <code>$visible</code>,
+                            <code>$attrs</code>,
+                            <code>$listeners</code>,
+                            <code>$element</code>,
+                            <code>$root</code>,
+                            <code>$parent</code>,
+                            <code>$child</code>,
+                            <code>$nextTick</code>,
+                            <code>$forceUpdate</code><br> See <a href="https://doc.quickapp.cn/framework/script.html">more information</a>.
+                        </details>
+                    </td>
+                    <td class="c4">
+                        <details>
+                            <summary>Predefined methods</summary>
+                            <code>setData</code>,
+                            <code>$spliceData</code>,
+                            <code>createSelectorQuery</code>,
+                            <code>createIntersectionObserver</code>,
+                            <code>selectOwnerComponent</code>,
+                            <code>selectComponsedParentComponent</code><br> See <a href="https://opendocs.alipay.com/mini/framework/component_object">more information</a>.
+                        </details>
+                    </td>
+                    <td class="c5">
+                        <details>
+                            <summary>Predefined properties</summary>
+                            <code>setData</code>,
+                            <code>hasBehavior</code>,
+                            <code>triggerEvent	</code>,
+                            <code>createSelectorQuery</code>,
+                            <code>createIntersectionObserver</code>,
+                            <code>selectComponent</code>,
+                            <code>selectAllComponents</code>,
+                            <code>groupSetData</code><br> See <a href="https://smartprogram.baidu.com/docs/develop/framework/custom-component_comp/">more information</a>.
+                        </details>
+                    </td>
                 </tr>
             </tbody>
         </table>
