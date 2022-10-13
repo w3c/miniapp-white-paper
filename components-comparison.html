@@ -781,9 +781,7 @@
                             <summary>
                                 Vue.js-like approach under the same .ux document.
                             </summary>
-                            <code>
-                                <pre>
-&lt;template&gt;
+                            <pre><code>&lt;template&gt;
   &lt;text&gt;{{message}}&lt;/text&gt;
 &lt;/template&gt;
 
@@ -793,8 +791,7 @@
       message: 'Hello'
     }
   }
-&lt;/script&gt;</pre>  
-                            </code>
+&lt;/script&gt;</code></pre>
                             <a href="https://doc.quickapp.cn/framework/template.html">More information</a>.
                         </details>
                     </td>
@@ -818,9 +815,7 @@ Page({
                             <summary>
                                 The rendering layer binds data through a SWAN template.
                             </summary>
-                            <code>
-                                <pre>
-&lt;!-- index.swan --&gt;
+                            <pre><code>&lt;!-- index.swan --&gt;
 &lt;view&gt;{{text}}&lt;/view&gt;
 
 // index.js
@@ -828,8 +823,7 @@ Page({
     data: {
         text: 'init data',
     }
-});</pre>  
-                            </code>
+});</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/app_service_pagedata/">More information</a>.
                         </details>
                     </td>
@@ -839,20 +833,16 @@ Page({
                     <td class="c1">Definition</td>
                     <td class="c2"><code>&lt;template&gt;<code>, <code>&lt;slot&gt;<code></td>
                     <td class="c3">
-<details>
+                        <details>
                             <summary>
                                 <code>&lt;template&gt;</code> element in the root of the .ux document
                         </summary>
-                        <code>
-                                <pre>
-&lt;!– comp.ux --&gt;
+                        <pre><code>&lt;!– comp.ux --&gt;
 &lt;template&gt;
   &lt;div class="demo-page"&gt;
     &lt;text class="title"&gt;Hi World&lt;/text&gt;
   &lt;/div&gt;
-&lt;/template&gt;
-</pre>  
-                            </code>
+&lt;/template&gt;</code></pre>
                         <a href="https://doc.quickapp.cn/framework/template.html">More information</a>.
                         </details>
                     </td>
@@ -861,16 +851,12 @@ Page({
                             <summary>
                                 AXML’s <code>&lt;template&gt;</code> element
                             </summary>
-                            <code>
-                                <pre>
-&lt;!-- header.axml --&gt;
+                            <pre><code>&lt;!-- header.axml --&gt;
 &lt;template name=“header"&gt;
   &lt;view&gt;
     &lt;text&gt;{{index}}:{{msg}}&lt;/text&gt;
   &lt;/view&gt;
-&lt;/template&gt;
-</pre>  
-                            </code>
+&lt;/template&gt;</code></pre>
                             <a href="https://opendocs.alipay.com/mini/framework/axml-template">More information</a>.
                         </details>
                     </td>
@@ -879,14 +865,10 @@ Page({
                             <summary>
                                 SWAN document with elements
                             </summary>
-                            <code>
-                                <pre>
-&lt;view&gt;
+                            <pre><code>&lt;view&gt;
     &lt;text class="wrap"&gt;hello world&lt;/text&gt;
 &lt;/view&gt;
-&lt;text Class="wrap"&gt;hello world&lt;/text&gt;
-</pre>  
-                            </code>
+&lt;text Class="wrap"&gt;hello world&lt;/text&gt;</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/dev/">More information</a>.
                         </details>
                     </td>
@@ -901,17 +883,13 @@ Page({
                             <summary>
                                 <code>&lt;import&gt;</code> element in the root of the .ux document
                             </summary>
-                            <code>
-                                <pre>
-&lt;import name="comp" src="./comp"&gt;&lt;/import&gt;
+                            <pre><code>&lt;import name="comp" src="./comp"&gt;&lt;/import&gt;
 
 &lt;template&gt;
   &lt;div&gt;
     &lt;comp&gt;&lt;/comp&gt;
   &lt;/div&gt;
-&lt;/template&gt;
-</pre>  
-                            </code>
+&lt;/template&gt;</code></pre>
                             <a href="https://doc.quickapp.cn/framework/template.html">More information</a>.
                         </details>
                     </td>
@@ -920,13 +898,9 @@ Page({
                             <summary>
                                 AXML’s <code>&lt;import&gt;</code> element
                             </summary>
-                            <code>
-                                <pre>
-&lt;import src="./header.axml" /&gt;
+                            <pre><code>&lt;import src="./header.axml" /&gt;
 
-&lt;template is="header" data="{{...item}}"/&gt;
-</pre>  
-                            </code>
+&lt;template is="header" data="{{...item}}"/&gt;</code></pre>
                             <a href="https://opendocs.alipay.com/mini/framework/axml-template">More information</a>.
                         </details>
                     </td>
@@ -935,9 +909,7 @@ Page({
                             <summary>
                                 Declaration in configuration document
                             </summary>
-                            <code>
-                                <pre>
-// home.json
+                            <pre><code>// home.json
 {
   "usingComponents": {
      "custom": "/components/custom/custom"
@@ -947,9 +919,7 @@ Page({
 &lt;!-- home.swan --&gt;
 &lt;view&gt;
    &lt;custom name="swanapp"&gt;&lt;/custom&gt;
-&lt;/view&gt;
-</pre>  
-                            </code>
+&lt;/view&gt;</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/dev/">More information</a>.
                         </details>
                     </td>
@@ -964,9 +934,7 @@ Page({
                             <summary>
                                 Components define properties as <code>props</code>
                             </summary>
-                            <code>
-                                <pre>
-&lt;!– comp.ux --&gt;
+                            <pre><code>&lt;!– comp.ux --&gt;
 &lt;script&gt;
   export default {
     props: ['say', 'propObject'],
@@ -975,9 +943,7 @@ Page({
       console.info(this.propObject)
     }
   }
-&lt;/script&gt;
-</pre>  
-                            </code>
+&lt;/script&gt;</code></pre>
                             <a href="https://doc.quickapp.cn/tutorial/framework/parent-child-component-communication.html">More information</a>.
                         </details>
                     </td>
@@ -986,15 +952,11 @@ Page({
                             <summary>
                                 Components define properties as <code>props</code>
                             </summary>
-                            <code>
-                                <pre>
-// /components/index/index.js
+                            <pre><code>// /components/index/index.js
 Component ({
   props : { 
     name : 'My name'}
-});
-</pre>  
-                            </code>
+});</code></pre>
                             <a href="https://opendocs.alipay.com/mini/framework/component_object">More information</a>.
                         </details>
                     </td>
@@ -1003,9 +965,7 @@ Component ({
                             <summary>
                                 Use of <code>Component()</code> + properties for registration
                             </summary>
-                            <code>
-                                <pre>
-// (custom.js)
+                            <pre><code>// (custom.js)
 Component({
   properties: {
     name: {
@@ -1013,9 +973,7 @@ Component({
       value: 'swan',
     }
   }
-})
-</pre>  
-                            </code>
+})</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/custom-component/">More information</a>.
                         </details>
                     </td>
@@ -1030,9 +988,7 @@ Component({
                             <summary>
                                 <code>props</code> as instance's attributes
                             </summary>
-                            <code>
-                                <pre>
-&lt;import name="comp" src="./comp"&gt;&lt;/import&gt;
+                            <pre><code>&lt;import name="comp" src="./comp"&gt;&lt;/import&gt;
 
 &lt;template&gt;
   &lt;div&gt;
@@ -1041,9 +997,7 @@ Component({
       prop-object="{{obj}}"&gt;
     &lt;/comp&gt;
   &lt;/div&gt;
-&lt;/template&gt;
-</pre>  
-                            </code>
+&lt;/template&gt;</code></pre>
                             <a href="https://doc.quickapp.cn/tutorial/framework/parent-child-component-communication.html">More information</a>.
                         </details>
                     </td>
@@ -1052,12 +1006,8 @@ Component({
                             <summary>
                                 <code>props</code> as instance's attributes.
                             </summary>
-                            <code>
-                                <pre>
-&lt;!-- /pages/index/index.axml --&gt;
-&lt;comp name='Another name'&gt;&lt;/comp&gt; 
-</pre>  
-                            </code>
+                            <pre><code>&lt;!-- /pages/index/index.axml --&gt;
+&lt;comp name='Another name'&gt;&lt;/comp&gt;</code></pre>
                             <a href="https://opendocs.alipay.com/mini/framework/component_object">More information</a>.
                         </details>
                     </td>
@@ -1066,9 +1016,7 @@ Component({
                             <summary>
                                 <code>properties</code> as instance's attributes
                             </summary>
-                            <code>
-                                <pre>
-// home.json
+                            <pre><code>// home.json
 {
   "usingComponents": {
      "custom": "/components/custom/custom"
@@ -1078,9 +1026,7 @@ Component({
 &lt;view&gt;
     &lt;custom name="Passing text" &gt;
     &lt;/custom&gt;
-&lt;/view&gt;
-</pre>  
-                            </code>
+&lt;/view&gt;</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/custom-component/">More information</a>.
                         </details>
                     </td>
@@ -1095,11 +1041,7 @@ Component({
                             <summary>
                                 <code>on+eventtype</code> attribute (<code>@+eventtype</code>)
                             </summary>
-                            <code>
-                                <pre>
-&lt;text onclick="loadMore"&gt;&lt;/text&gt;
-</pre>  
-                            </code>
+                            <pre><code>&lt;text onclick="loadMore"&gt;&lt;/text&gt;</code></pre>
                             <a href="https://doc.quickapp.cn/tutorial/framework/event-on.html">More information</a>.
                         </details>
                     </td>
@@ -1108,13 +1050,9 @@ Component({
                             <summary>
                                 <code>on+eventtype</code> attribute
                             </summary>
-                            <code>
-                                <pre>
-&lt;view onTap="loadMore"&gt;
+                            <pre><code>&lt;view onTap="loadMore"&gt;
   More items…
-&lt;view&gt; 
-</pre>  
-                            </code>
+&lt;view&gt; </code></pre>
                             <a href="https://opendocs.alipay.com/mini/framework/events">More information</a>.
                         </details>
                     </td>
@@ -1123,13 +1061,9 @@ Component({
                             <summary>
                                 <code>bind:+eventtype</code> attribute
                             </summary>
-                            <code>
-                                <pre>
-&lt;view bind:tap="loadMore"&gt;
+                            <pre><code>&lt;view bind:tap="loadMore"&gt;
    More items…
-&lt;/view&gt;
-</pre>  
-                            </code>
+&lt;/view&gt;</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/view_incident/">More information</a>.
                         </details>
                     </td>
@@ -1143,17 +1077,13 @@ Component({
                             <summary>
                                 <code>function()<code> declaration in the <code>&lt;script&gt;</code>
                         </summary>
-                        <code>
-                                <pre>
-&lt;script&gt;
+                        <pre><code>&lt;script&gt;
   export default {
     loadMore(e) {
       console.log(e);
     }  
   }
-&lt;/script&gt;
-</pre>  
-                            </code>
+&lt;/script&gt;</code></pre>
                         <a href="https://doc.quickapp.cn/tutorial/framework/event-on.html">More information</a>.
                         </details>
                     </td>
@@ -1162,15 +1092,11 @@ Component({
                             <summary>
                                 <code>function()<code> declaration in <code>Page({})</code>
                             </summary>
-                            <code>
-                                <pre>
-Page ({
+                            <pre><code>Page ({
   loadMore(e) {
     console.log(e);
   },
-});
-</pre>  
-                            </code>
+});</code></pre>
                             <a href="https://opendocs.alipay.com/mini/framework/events">More information</a>.
                         </details>
                     </td>
@@ -1179,15 +1105,11 @@ Page ({
                             <summary>
                                 <code>function()<code> declaration in <code>Page({})</code>
                             </summary>
-                            <code>
-                                <pre>
-Page({
+                            <pre><code>Page({
   loadMore(e) {
     swan.showToast(e.type);
   }
-});
-</pre>  
-                            </code>
+});</code></pre>
                             <a href="https://smartprogram.baidu.com/docs/develop/framework/view_incident/">More information</a>.
                         </details>
                     </td>
