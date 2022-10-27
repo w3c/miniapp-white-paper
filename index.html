@@ -460,11 +460,22 @@
                             <li>Separation and parallel implementation of render and JavaScript worker can prevent the situation where a JavaScript execution impacts or slows down the page rendering, which can help enhance the rendering performance.</li>
                         </ul>
                     </section>
+                    <section id="sec-miniapp-pages-components">
+                      <h2>MiniApp Pages and Components</h2>
+                      <p>A MiniApp is a bundle of one or more pages in a container. The MiniApp components, composed of structural, styling, and logic resources, are the building blocks for creating MiniApp pages. These scoped components are reusable. They may also share other common internal resources such as media files, stylesheets, scripts, or data, as illustrated in <a href="#img-miniapp-pages-components"></a>.</p>
+                      <p>MiniApps usually have configuration files (or manifests) that contain metadata for user agents to configure and manage the execution environment of the app.</p>
+                      <figure id="img-miniapp-pages-components">
+                        <img alt="Components structure of a MiniApp (pages and components)" src="https://w3c.github.io/miniapp-packaging/images/miniapp-pages-components.svg" width="600">
+                        <figcaption>
+                          Structure of a MiniApp (pages and components)
+                        </figcaption>
+                      </figure>                      
+                    </section>                    
                     <section id="api_and_component">
                         <h2>Rich APIs and Components</h2>
-                        <p>MiniApp platform provides many components to help developers build a fancy UI, including essential components like `view`, `form`, `image`, and high-level components like maps.</p>
-                        <p>MiniApp vendors also offer many APIs for developers to access both the Web and the native capabilities, including basic interfaces such as UI display APIs, image processing API, and those advanced ones like user account API, map API, and payment API.</p>
-                        <p>APIs usually work together with components. When a user clicks a certain component on a MiniApp page, it will call the related API to complete the user’s interaction and refresh the current MiniApp page if needed.</p>
+                        <p>As mentioned in <a href="#sec-miniapp-pages-components"></a>, the MiniApp components help developers build pages with fancy UI. The MiniApp platforms usually include essential components like `&lt;view&gt;`, `&lt;form&gt;`, and `&lt;button&gt;`, but also high-level components like `&lt;map&gt;`.</p>
+                        <p>MiniApp vendors also offer many APIs for developers to access both Web services and the native capabilities, including basic interfaces such as UI display APIs, image processing API, and those advanced ones like user account API, map API, and payment API.</p>
+                        <p>APIs usually work together with components. When a user clicks a specific component on a MiniApp page, it will call the related API to complete the user’s interaction and refresh the current MiniApp page if needed.</p>
                     </section>
                     <section id="constructor">
                         <h2>MiniApp Constructor</h2>
